@@ -1,5 +1,7 @@
+/app/springMvcLivro/src/main/java/br/com/springMvcLivro/config/JPAConfiguration.java
 /app/springMvcLivro/src/main/java/br/com/springMvcLivro/Controllers/ProductsController.java
 /app/springMvcLivro/src/main/java/br/com/springMvcLivro/config/AppWebConfiguration.java
+/app/springMvcLivro/src/main/java/br/com/springMvcLivro/DAO/ProductDAO.java
 /app/springMvcLivro/src/main/java/br/com/springMvcLivro/config/ServletSpringMVC.java
 /app/springMvcLivro/src/main/java/br/com/springMvcLivro/Controllers/HomeController.java
 /app/springMvcLivro/src/main/java/br/com/springMvcLivro/models/Product.java

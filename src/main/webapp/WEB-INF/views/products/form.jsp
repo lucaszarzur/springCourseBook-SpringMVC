@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <form method="post" action="/springMvcLivro/produtos">
+    <form method="post" action="/produtos">
         <div>
             <label for="title">Titulo</label>
             <input type="text" name="title" id="title"/>

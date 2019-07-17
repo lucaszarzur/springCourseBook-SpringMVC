@@ -27,7 +27,7 @@ public class JPAConfiguration {
         // abstração do arquivo persistence.xml
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "br.com.casadocodigo.loja.models" });
+        em.setPackagesToScan(new String[] { "br.com.springMvcLivro.models" });
 
         // representa a escolha de implementação da JPA que, neste projeto, será o Hibernate
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -45,7 +45,7 @@ public class JPAConfiguration {
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/springMvcLivro");
         dataSource.setUsername( "root" );
-        dataSource.setPassword( "" );
+        dataSource.setPassword( "ffcfutarte1" );
 
         return dataSource;
     }
