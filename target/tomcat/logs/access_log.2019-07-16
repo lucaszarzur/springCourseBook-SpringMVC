@@ -1,1 +1,0 @@
-127.0.0.1 - - [16/Jul/2019:21:24:21 -0300] "PUT /manager/text/deploy?path=%2Fminiservlet HTTP/1.1" 404 - http-bio-8080-exec-1 0

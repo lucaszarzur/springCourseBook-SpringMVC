@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     @RequestMapping("/home")
-    public void index() {
+    public String index() {
         //aqui ainda vamos carregar os produtos.
         System.out.println("Carregando os produtos");
+
+        return "hello-world";
     }
 
 }
