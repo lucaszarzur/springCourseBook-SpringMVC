@@ -28,7 +28,7 @@
                 <executions>
                     <execution></execution> </executions>
             </plugin>
-            
+
         </plugins>
     </build>
 
