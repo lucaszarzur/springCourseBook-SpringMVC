@@ -7,8 +7,8 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
     Essa classe é a DispatcherServlet, essencial para receber requisições web.
  */
 
-public class ServletSpringMVC extends
-        AbstractAnnotationConfigDispatcherServletInitializer {
+public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletInitializer {
+
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return null;
@@ -17,7 +17,7 @@ public class ServletSpringMVC extends
     // Indica quais outras classes devem ser lidas durante o carregamento da aplicação web
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{AppWebConfiguration.class};
+        return new Class[]{AppWebConfiguration.class, JPAConfiguration.class};
     }
 
     // Especifica padrão de endereço que vai ser delegado para o Servlet do Spring MVC

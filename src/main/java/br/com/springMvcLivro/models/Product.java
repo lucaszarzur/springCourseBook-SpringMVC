@@ -1,7 +1,14 @@
 package br.com.springMvcLivro.models;
 
+import javax.persistence.*;
+
+@Entity
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String title;
+    @Lob
     private String description;
     private int pages;
 

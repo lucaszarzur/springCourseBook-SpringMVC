@@ -1,9 +1,11 @@
 package br.com.springMvcLivro.config;
 
 import br.com.springMvcLivro.Controllers.HomeController;
+import br.com.springMvcLivro.DAO.ProductDAO;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /*
@@ -12,8 +14,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 
 @EnableWebMvc
-@ComponentScan(basePackageClasses = {HomeController.class})
-public class AppWebConfiguration {
+@ComponentScan(basePackageClasses = {HomeController.class, ProductDAO.class})
+public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
     // indica para o Spring que o retorno desse método deve ser registrado como um objeto gerenciado pelo container
     @Bean
