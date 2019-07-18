@@ -1,11 +1,9 @@
 package br.com.springMvcLivro.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Product {
@@ -18,6 +16,9 @@ public class Product {
     @Lob
     private String description;
     private int pages;
+
+    @ElementCollection
+    private List<Price> prices = new ArrayList<Price>();
 
     public Integer getId() {
         return id;
