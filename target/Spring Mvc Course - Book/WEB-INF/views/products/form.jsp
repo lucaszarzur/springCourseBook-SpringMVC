@@ -7,18 +7,15 @@
     <title>Cadastro de produtos</title>
 </head>
 
-<c:forEach items="${types}" var="bookType" varStatus="status">
-<div>
-    <label for="price_${bookType}">${bookType}</label>
-    <input type="text" name="prices[${status.index}].value"
-    id="price_${bookType}"/>
-    <input type="hidden"
-    name="prices[${status.index}].bookType"
-    value="${bookType}"/>
-</div>
-</c:forEach>
-
 <body>
+	<spring:hasBindErrors name="product">
+		<ul>
+		<c:forEach var="error" items="${errors.allErrors}">
+			<li>${error.code}-${error.field}</li>
+		</c:forEach>
+		</ul>
+	</spring:hasBindErrors>
+
     <form method="post" action="/produtos">
         <div>
             <label for="title">Titulo</label>
