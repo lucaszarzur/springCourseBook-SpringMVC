@@ -8,16 +8,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @Transactional
+@RequestMapping("/produtos")
 public class ProductsController {
 
     @Autowired
     private ProductDAO productDAO;
 
-    @RequestMapping("/produtos")
+    @RequestMapping(method=RequestMethod.GET)
     public ModelAndView list(){
         ModelAndView modelAndView =
                 new ModelAndView("products/list");
@@ -25,14 +27,14 @@ public class ProductsController {
         return modelAndView;
     }
 
-    @RequestMapping("/produtos")
+    @RequestMapping(method=RequestMethod.POST)
     public String save(Product product){
         productDAO.save(product);
         System.out.println("Cadastrando o produto " + product);
         return "products/ok";
     }
 
-    @RequestMapping("/produtos/form")
+    @RequestMapping("/form")
     public String form(Model model){
         model.addAttribute("types", Price.BookType.values());
         return "products/form";
