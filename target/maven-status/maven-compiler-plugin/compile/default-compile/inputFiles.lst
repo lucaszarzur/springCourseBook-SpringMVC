@@ -1,5 +1,6 @@
 /app/springMvcLivro/src/main/java/br/com/springMvcLivro/models/Price.java
 /app/springMvcLivro/src/main/java/br/com/springMvcLivro/config/JPAConfiguration.java
+/app/springMvcLivro/src/main/java/br/com/springMvcLivro/validation/ProductValidator.java
 /app/springMvcLivro/src/main/java/br/com/springMvcLivro/Controllers/ProductsController.java
 /app/springMvcLivro/src/main/java/br/com/springMvcLivro/config/AppWebConfiguration.java
 /app/springMvcLivro/src/main/java/br/com/springMvcLivro/DAO/ProductDAO.java

@@ -3,14 +3,21 @@ package br.com.springMvcLivro.Controllers;
 import br.com.springMvcLivro.DAO.ProductDAO;
 import br.com.springMvcLivro.models.Price;
 import br.com.springMvcLivro.models.Product;
+import br.com.springMvcLivro.validation.ProductValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 @Transactional
@@ -19,6 +26,11 @@ public class ProductsController {
 
     @Autowired
     private ProductDAO productDAO;
+
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        binder.setValidator(new ProductValidator());
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView list() {
@@ -29,17 +41,21 @@ public class ProductsController {
     }
 
     @RequestMapping(method=RequestMethod.POST)
-    public String save(Product product, RedirectAttributes redirectAttributes) {
+    public ModelAndView save(@Valid Product product, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+        if(bindingResult.hasErrors()){
+            return form(product);
+        }
+
         productDAO.save(product);
         redirectAttributes.addFlashAttribute("sucesso", "Produto cadastrado com sucesso");
-
-        return "redirect:produtos";
+        return new ModelAndView("redirect:produtos");
     }
 
     @RequestMapping("/form")
-    public String form(Model model) {
-        model.addAttribute("types", Price.BookType.values());
+    public ModelAndView form(@ModelAttribute Product product){
+        ModelAndView modelAndView = new ModelAndView("products/form");
+        modelAndView.addObject("bookTypes", Price.BookType.values());
 
-        return "products/form";
+        return modelAndView;
     }
 }
