@@ -1,7 +1,10 @@
 package br.com.springMvcLivro.models;
 
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +14,14 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotBlank
     private String title;
 
     @Lob
+    @NotBlank
     private String description;
+    @Min(30)
     private int pages;
 
     @ElementCollection

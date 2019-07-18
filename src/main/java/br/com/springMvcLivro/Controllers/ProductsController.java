@@ -26,9 +26,12 @@ public class ProductsController {
     @Autowired
     private ProductDAO productDAO;
 
+    /* Indica para o Spring que esse método deve ser chamado sempre que um request cair no controller em questão
+       utilizado para validações */
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
-        binder.setValidator(new ProductValidator());
+        // não precisa por enquanto, utilizaremos os padroes do Hibernate
+        //binder.setValidator(new ProductValidator());
     }
 
     @RequestMapping(method = RequestMethod.GET)
