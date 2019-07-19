@@ -8,3 +8,4 @@ br/com/springMvcLivro/models/Price.class
 br/com/springMvcLivro/DAO/ProductDAO.class
 br/com/springMvcLivro/models/Product.class
 br/com/springMvcLivro/controllers/HomeController.class
+br/com/springMvcLivro/FileSaver.class

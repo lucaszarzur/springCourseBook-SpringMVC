@@ -1,6 +1,7 @@
 package br.com.springMvcLivro.controllers;
 
 import br.com.springMvcLivro.DAO.ProductDAO;
+import br.com.springMvcLivro.FileSaver;
 import br.com.springMvcLivro.models.Price;
 import br.com.springMvcLivro.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -24,6 +26,9 @@ public class ProductsController {
 
     @Autowired
     private ProductDAO productDAO;
+
+    @Autowired
+    private FileSaver fileSaver;
 
     /* Indica para o Spring que esse método deve ser chamado sempre que um request cair na controller em questão.
        Utilizado para validações */
@@ -42,12 +47,16 @@ public class ProductsController {
     }
 
     @RequestMapping(method=RequestMethod.POST)
-    public ModelAndView save(@Valid Product product, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+    public ModelAndView save(MultipartFile summary, @Valid Product product, BindingResult bindingResult, RedirectAttributes redirectAttributes){
         if(bindingResult.hasErrors()){
             return form(product);
         }
 
+        // webPath = caminho onde arquivo será salvo
+        String webPath = fileSaver.write("uploaded-images",summary);
+        product.setSummaryPath(webPath);
         productDAO.save(product);
+
         redirectAttributes.addFlashAttribute("sucesso", "Produto cadastrado com sucesso");
         return new ModelAndView("redirect:produtos");
     }

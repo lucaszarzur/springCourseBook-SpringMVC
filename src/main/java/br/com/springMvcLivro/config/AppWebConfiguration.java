@@ -1,5 +1,6 @@
 package br.com.springMvcLivro.config;
 
+import br.com.springMvcLivro.FileSaver;
 import br.com.springMvcLivro.controllers.HomeController;
 import br.com.springMvcLivro.DAO.ProductDAO;
 import org.springframework.context.MessageSource;
@@ -10,6 +11,8 @@ import org.springframework.format.datetime.DateFormatter;
 import org.springframework.format.datetime.DateFormatterRegistrar;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -20,7 +23,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 */
 
 @EnableWebMvc
-@ComponentScan(basePackageClasses = {HomeController.class, ProductDAO.class})
+@ComponentScan(basePackageClasses = {HomeController.class, ProductDAO.class, FileSaver.class})
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
 
@@ -54,5 +57,11 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
         registrar.registerFormatters(conversionService);
 
         return conversionService;
+    }
+
+    // provem uma implementação dessa interface para que o Spring MVC possa fazer seu trabalho
+    @Bean
+    public MultipartResolver multipartResolver(){
+        return new StandardServletMultipartResolver();
     }
 }

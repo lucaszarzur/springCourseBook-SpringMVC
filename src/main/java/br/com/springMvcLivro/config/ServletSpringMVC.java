@@ -2,6 +2,9 @@ package br.com.springMvcLivro.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration;
+
 /*
     Responsável por tratar todas as requisições que chegam para o Spring MVC.
     Essa classe é a DispatcherServlet, essencial para receber requisições web.
@@ -24,5 +27,12 @@ public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletI
     @Override
     protected String[] getServletMappings() {
         return new String[]{"/"};
+    }
+
+    // possibilita, entre outras coisas, registrar um objeto (via upload) de configuração do tipo MultipartConfigElement
+    @Override
+    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+        registration.setMultipartConfig(
+                new MultipartConfigElement(""));
     }
 }

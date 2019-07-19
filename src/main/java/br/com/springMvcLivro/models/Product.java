@@ -28,6 +28,7 @@ public class Product {
 
     @ElementCollection
     private List<Price> prices = new ArrayList<Price>();
+    private String summaryPath;
 
 
     // getters and setters
@@ -77,6 +78,14 @@ public class Product {
 
     public void setPrices(List<Price> prices) {
         this.prices = prices;
+    }
+
+    public String getSummaryPath() {
+        return summaryPath;
+    }
+
+    public void setSummaryPath(String summaryPath) {
+        this.summaryPath = summaryPath;
     }
 }
 
