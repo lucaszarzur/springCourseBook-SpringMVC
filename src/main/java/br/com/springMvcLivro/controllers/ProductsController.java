@@ -1,8 +1,7 @@
 package br.com.springMvcLivro.controllers;
 
 import br.com.springMvcLivro.DAO.ProductDAO;
-import br.com.springMvcLivro.FileSaver;
-import br.com.springMvcLivro.models.Price;
+import br.com.springMvcLivro.infra.FileSaver;
 import br.com.springMvcLivro.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

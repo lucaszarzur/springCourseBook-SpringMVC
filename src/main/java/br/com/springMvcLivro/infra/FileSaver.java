@@ -1,4 +1,4 @@
-package br.com.springMvcLivro;
+package br.com.springMvcLivro.infra;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
