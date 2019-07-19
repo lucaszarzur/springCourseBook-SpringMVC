@@ -15,6 +15,8 @@ public class Price {
         EBOOK,PRINTED,COMBO
     }
 
+
+    // getters and setters
     public BigDecimal getValue() {
         return value;
     }

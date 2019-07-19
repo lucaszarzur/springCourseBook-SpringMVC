@@ -11,14 +11,7 @@
         <finalName>Spring Mvc Course - Book</finalName>
         <plugins>
 
-            <!-- Jetty server -->
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.2.2.v20140723</version>
-            </plugin>
-
-            <!-- for error with maven install -->
+            <!-- for error with maven command "install" -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>

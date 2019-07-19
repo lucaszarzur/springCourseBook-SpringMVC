@@ -14,20 +14,20 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 /*
-    Arquivo de configuração do JPA para persitencia de dados
- */
+    Arquivo de configuração do JPA para persistencia de dados
+*/
 
 @EnableTransactionManagement
 public class JPAConfiguration {
 
     // cria alguns objetos que são importantes para o nosso entendimento do que realmente está acontecendo
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(){
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 
         // abstração do arquivo persistence.xml
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "br.com.springMvcLivro.models" });
+        em.setPackagesToScan(new String[]{"br.com.springMvcLivro.models"});
 
         // representa a escolha de implementação da JPA que, neste projeto, será o Hibernate
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -39,13 +39,13 @@ public class JPAConfiguration {
 
     // configura os parâmetros de conexão com o banco de dados
     @Bean
-    public DataSource dataSource(){
+    public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/springMvcLivro");
-        dataSource.setUsername( "root" );
-        dataSource.setPassword( "ffcfutarte1" );
+        dataSource.setUsername("root");
+        dataSource.setPassword("ffcfutarte1");
 
         return dataSource;
     }
@@ -61,7 +61,7 @@ public class JPAConfiguration {
 
     // informa por qual implementação de controle transacional vamos optar
     @Bean
-    public PlatformTransactionManager transactionManager (EntityManagerFactory emf){
+    public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(emf);
 

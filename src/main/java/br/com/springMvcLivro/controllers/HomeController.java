@@ -1,4 +1,4 @@
-package br.com.springMvcLivro.Controllers;
+package br.com.springMvcLivro.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

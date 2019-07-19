@@ -1,9 +1,8 @@
-package br.com.springMvcLivro.Controllers;
+package br.com.springMvcLivro.controllers;
 
 import br.com.springMvcLivro.DAO.ProductDAO;
 import br.com.springMvcLivro.models.Price;
 import br.com.springMvcLivro.models.Product;
-import br.com.springMvcLivro.validation.ProductValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,8 +25,8 @@ public class ProductsController {
     @Autowired
     private ProductDAO productDAO;
 
-    /* Indica para o Spring que esse método deve ser chamado sempre que um request cair no controller em questão
-       utilizado para validações */
+    /* Indica para o Spring que esse método deve ser chamado sempre que um request cair na controller em questão.
+       Utilizado para validações */
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
         // não precisa por enquanto, utilizaremos os padroes do Hibernate
@@ -56,7 +55,7 @@ public class ProductsController {
     @RequestMapping("/form")
     public ModelAndView form(@ModelAttribute Product product){
         ModelAndView modelAndView = new ModelAndView("products/form");
-        modelAndView.addObject("bookTypes", Price.BookType.values());
+        //modelAndView.addObject("bookTypes", Price.BookType.values());
 
         return modelAndView;
     }

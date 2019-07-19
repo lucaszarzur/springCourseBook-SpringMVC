@@ -5,7 +5,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 /*
     Responsável por tratar todas as requisições que chegam para o Spring MVC.
     Essa classe é a DispatcherServlet, essencial para receber requisições web.
- */
+*/
 
 public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletInitializer {
 

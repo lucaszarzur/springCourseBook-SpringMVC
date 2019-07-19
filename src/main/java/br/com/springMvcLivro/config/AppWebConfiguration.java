@@ -1,6 +1,6 @@
 package br.com.springMvcLivro.config;
 
-import br.com.springMvcLivro.Controllers.HomeController;
+import br.com.springMvcLivro.controllers.HomeController;
 import br.com.springMvcLivro.DAO.ProductDAO;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -17,16 +17,15 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 /*
     Classe com o objetivo principal de expor para a Servlet do Spring MVC
     quais são as classes que devem ser lidas e carregadas.
- */
+*/
 
 @EnableWebMvc
 @ComponentScan(basePackageClasses = {HomeController.class, ProductDAO.class})
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
-    // indica para o Spring que o retorno desse método deve ser registrado como um objeto gerenciado pelo container
-    @Bean
-    public InternalResourceViewResolver
-    internalResourceViewResolver() {
+
+    @Bean // -> indica para o Spring que o retorno desse método deve ser registrado como um objeto gerenciado pelo container
+    public InternalResourceViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
